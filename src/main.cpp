@@ -8,6 +8,14 @@
 
 #include <Wire.h>
 
+// CONNECTIONS
+// MISO => D6
+// VCC => 3V
+// SCK/SCL => D1
+// MOSI/SDA => D2
+// RESET => RST
+// GND => G
+
 // Global sensor variables
 unsigned int sensor_cap;
 // unsigned int sensor_temp;
