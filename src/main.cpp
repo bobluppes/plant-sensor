@@ -32,8 +32,7 @@ void debugPrint() {
 void setup()
 {
 
-    // Begin I2C and Serial communication
-    Wire.begin();
+    // Serial communication
     Serial.begin(115200);
 
     sensor.init();

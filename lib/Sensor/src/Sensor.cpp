@@ -1,6 +1,10 @@
 #include <Sensor.h>
 
-void Sensor::init() {
+void Sensor::init()
+{
+    // Begin I2C communication
+    Wire.begin();
+
     // Reset the chirp sensor
     writeI2CRegister8bit(0x20, 6);
 }
