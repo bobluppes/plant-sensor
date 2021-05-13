@@ -2,3 +2,6 @@
 .pio
 CMakeListsPrivate.txt
 cmake-build-*/ 
+
+# Config params
+config.h

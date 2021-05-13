@@ -1,0 +1,8 @@
+// General
+#define DEVICE_ID ESP.getChipId()
+
+// API
+#define HOST "plant.azurewebsites.net"
+#define PORT 80
+#define ENDPOINT "/api/sensor/"
+#define KEY "YOUR_SECRET_KEY"

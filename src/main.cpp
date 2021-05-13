@@ -5,6 +5,8 @@
 #include <Sensor.h>
 #include <ApiClient.h>
 
+#include <config.h>
+
 // CONNECTIONS
 // MISO => D6
 // VCC => 3V
@@ -34,6 +36,7 @@ void setup()
 
     // Serial communication
     Serial.begin(115200);
+    Serial.println("\nSensor ID: " + (String) DEVICE_ID);
 
     sensor.init();
 

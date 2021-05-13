@@ -1,5 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <WiFiManager.h>
+#include <ESP8266HTTPClient.h>
+
+#include <../../../src/config.h>
 
 #define NETWORK_LED D4
 

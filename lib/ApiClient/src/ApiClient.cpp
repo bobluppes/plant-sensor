@@ -2,8 +2,11 @@
 
 // ThingSpeak client variables
 WiFiClient client;
-const char *host = "YOUR_API_HOST";
-const int httpPort = YOUR_API_PORT;
+HTTPClient http;
+const char *host = HOST;
+const int httpPort = PORT;
+const String url = ENDPOINT;
+const String key = KEY;
 
 void ApiClient::init() {
     pinMode(NETWORK_LED, OUTPUT);
@@ -48,14 +51,19 @@ void ApiClient::post(unsigned int *humidity, unsigned int *temperature, unsigned
 {
     digitalWrite(NETWORK_LED, HIGH);
 
-    // Push the sensor data
-    client.print(String("POST ") +
-                 "/api?humidity=" + *humidity +
-                 "&temperature=" + *temperature +
-                 "&light=" + *light +
-                 " HTTP/1.1\r\n" +
-                 "Host: " + host + "\r\n" +
-                 "Connection: keep-alive\r\n\r\n");
+    http.begin(client, "http://" + (String) host + url + "?code=" + key);
+    http.addHeader("Content-Type", "application/json");
+
+    // Generate JSON body for POST request
+    const String data = String("{") +
+                        "\"device\":\"" + (String) DEVICE_ID + "\"," +
+                        "\"humidity\":\"" + (String) *humidity + "\"," +
+                        "\"temperature\":\"" + (String) *temperature + "\"," +
+                        "\"light\":\"" + (String) *light + "\"" +
+                        "}";
+
+    auto httpCode = http.POST(data);
+    Serial.println("POST to " + (String) host + " returns status code " + httpCode);
 
     // Close the connection
     client.stop();
