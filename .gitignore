@@ -4,3 +4,5 @@ CMakeListsPrivate.txt
 
 cmake-build-*/
 build/
+
+src/credentials.h
