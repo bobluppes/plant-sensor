@@ -28,9 +28,8 @@ void loop()
     Serial.println("Moisture: " + String(sensor_value.moisture_level) + "\tTemperature: " +
         String(sensor_value.temperature) + "\tHumidity: " + String(sensor_value.humidity));
 
-    // Go into deep sleep for 60 seconds to save energy
+    // Go into deep sleep for 5 minutes to save energy
     // Board is woken up by a reset from pin D0
-//     ESP.deepSleep(60e6);
+     ESP.deepSleep(300e6);
 
-    delay(1);
 }
